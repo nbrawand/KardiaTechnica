@@ -1,0 +1,101 @@
+.icon-row {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-top: 24px;
+  /* room for the absolutely-positioned labels below each icon */
+  padding-bottom: 2em;
+}
+
+/* the clickable wrapper — owns the layout move, resets <button> defaults */
+.icon-slot {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.icon-slot:focus-visible {
+  outline: none;
+}
+.icon-slot:focus-visible .icon {
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px #fff);
+}
+
+.icon-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* slow up-and-down float (offset per-icon via inline animation-delay) */
+  animation: icon-float 4s ease-in-out infinite;
+}
+
+@keyframes icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  /* white outline, no fill */
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+
+  /* start invisible, then slowly fade in */
+  opacity: 0;
+  animation: icon-fade-in 1.5s ease-out forwards;
+
+  /* smooth transition into the hover glow */
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.icon-slot:hover .icon {
+  /* layered drop-shadows = soft white glow around the outline */
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px #fff);
+  transform: scale(1.1);
+}
+
+/* the current view's icon stays lit */
+.icon-slot.is-active .icon {
+  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 14px #fff);
+}
+
+.icon-label {
+  /* out of flow + centered, so its growing width never moves the icons */
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+@keyframes icon-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    animation: none;
+    opacity: 1;
+  }
+  .icon-item {
+    animation: none;
+  }
+}

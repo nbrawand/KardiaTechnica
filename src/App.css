@@ -1,0 +1,48 @@
+.shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* the icon-row is the only in-flow item, so it's what gets centered —
+     identical position whether the title is shown or hidden. */
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  position: relative;
+}
+
+.masthead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* title floats above the icon (out of flow) — fading it never moves the icon */
+.masthead-title {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+/* content always sits below the centered icon, out of flow. Kept absolute
+   in BOTH states so an exiting page doesn't snap into flow mid-fade.
+   (On home the route renders nothing, so this is empty.) */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 72px; /* clear the icon + its caption */
+  width: 100%;
+  max-width: 760px;
+  padding: 0 24px;
+  box-sizing: border-box;
+
+  /* fill from just below the icon to the viewport bottom, and scroll
+     internally if the content is taller — the icon stays fixed-centered. */
+  max-height: calc(50vh - 96px);
+  overflow-y: auto;
+}

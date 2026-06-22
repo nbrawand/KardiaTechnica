@@ -1,0 +1,14 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.page h2 {
+  margin-bottom: 16px;
+}
+
+.page p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
