@@ -41,6 +41,7 @@ function IconItem({ label, shape, index }: IconDef & { index: number }) {
   const active = location.pathname === `/${label}`
 
   const [typed, setTyped] = useState('')
+  const [hovering, setHovering] = useState(false)
   const intervalRef = useRef<number | null>(null)
 
   const stop = () => {
@@ -51,6 +52,7 @@ function IconItem({ label, shape, index }: IconDef & { index: number }) {
   }
 
   const startTyping = () => {
+    setHovering(true)
     if (active) return // active label is always shown in full
     stop()
     let i = 0
@@ -62,10 +64,18 @@ function IconItem({ label, shape, index }: IconDef & { index: number }) {
   }
 
   const handleLeave = () => {
-    if (active) return
+    setHovering(false)
     stop()
     setTyped('')
   }
+
+  // When selection flips, drop any hover/typed state so stale text can't
+  // linger under the icon after it's unselected (the slide can swallow mouseleave).
+  useEffect(() => {
+    setHovering(false)
+    setTyped('')
+    stop()
+  }, [active])
 
   // Clean up the timer if the component unmounts mid-type.
   useEffect(() => () => stop(), [])
@@ -97,7 +107,9 @@ function IconItem({ label, shape, index }: IconDef & { index: number }) {
         >
           {shape}
         </svg>
-        <span className="icon-label">{active ? label : typed}</span>
+        <span className="icon-label">
+          {active ? label : hovering ? typed : ''}
+        </span>
       </span>
     </motion.button>
   )

@@ -23,7 +23,7 @@
   outline: none;
 }
 .icon-slot:focus-visible .icon {
-  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
+  transform: scale(1.1);
 }
 
 .icon-item {
@@ -59,19 +59,12 @@
   opacity: 0;
   animation: icon-fade-in 1.5s ease-out forwards;
 
-  /* smooth transition into the hover glow */
-  transition: filter 0.3s ease, transform 0.3s ease;
+  /* smooth scale on hover */
+  transition: transform 0.3s ease;
 }
 
 .icon-slot:hover .icon {
-  /* layered drop-shadows = soft glow around the outline (matches stroke color) */
-  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
   transform: scale(1.1);
-}
-
-/* the current view's icon stays lit */
-.icon-slot.is-active .icon {
-  filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 14px currentColor);
 }
 
 .icon-label {
