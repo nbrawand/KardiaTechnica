@@ -14,14 +14,16 @@
   border: none;
   padding: 0;
   font: inherit;
-  color: inherit;
+  /* theme-aware: dark in light mode, light in dark mode. Everything below
+     (stroke, glow, label) derives from this via currentColor. */
+  color: var(--text-h);
 }
 
 .icon-slot:focus-visible {
   outline: none;
 }
 .icon-slot:focus-visible .icon {
-  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px #fff);
+  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
 }
 
 .icon-item {
@@ -47,9 +49,9 @@
 .icon {
   width: 48px;
   height: 48px;
-  /* white outline, no fill */
+  /* outline, no fill — color follows the theme via currentColor */
   fill: none;
-  stroke: #fff;
+  stroke: currentColor;
   stroke-width: 2;
   stroke-linejoin: round;
 
@@ -62,14 +64,14 @@
 }
 
 .icon-slot:hover .icon {
-  /* layered drop-shadows = soft white glow around the outline */
-  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px #fff);
+  /* layered drop-shadows = soft glow around the outline (matches stroke color) */
+  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
   transform: scale(1.1);
 }
 
 /* the current view's icon stays lit */
 .icon-slot.is-active .icon {
-  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 14px #fff);
+  filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 14px currentColor);
 }
 
 .icon-label {
@@ -79,7 +81,7 @@
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  color: #fff;
+  color: inherit;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
 }
