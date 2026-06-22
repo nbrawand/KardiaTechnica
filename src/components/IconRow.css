@@ -17,6 +17,8 @@
   /* theme-aware: dark in light mode, light in dark mode. Everything below
      (stroke, glow, label) derives from this via currentColor. */
   color: var(--text-h);
+  /* make tap highlight on mobile transparent */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .icon-slot:focus-visible {
