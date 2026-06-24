@@ -1,3 +1,4 @@
+/* Design tokens (light) + global base typography for the document. */
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -30,6 +31,7 @@
   }
 }
 
+/* Dark-mode overrides for the design tokens + icon inversion. */
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
@@ -50,6 +52,7 @@
   }
 }
 
+/* App container: fixed max-width, centered, bordered, full-height column. */
 #root {
   width: 1126px;
   max-width: 100%;
@@ -62,10 +65,12 @@
   box-sizing: border-box;
 }
 
+/* Reset the default body margin. */
 body {
   margin: 0;
 }
 
+/* Shared heading styles. */
 h1,
 h2 {
   font-family: var(--heading);
@@ -73,6 +78,7 @@ h2 {
   color: var(--text-h);
 }
 
+/* Hero title sizing (responsive). */
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
@@ -82,6 +88,7 @@ h1 {
     margin: 20px 0;
   }
 }
+/* Section heading sizing (responsive). */
 h2 {
   font-size: 24px;
   line-height: 118%;
@@ -91,10 +98,12 @@ h2 {
     font-size: 20px;
   }
 }
+/* Reset default paragraph margin. */
 p {
   margin: 0;
 }
 
+/* Monospace pill shared by inline code and the counter. */
 code,
 .counter {
   font-family: var(--mono);
@@ -103,6 +112,7 @@ code,
   color: var(--text-h);
 }
 
+/* Inline code: smaller text on a tinted background. */
 code {
   font-size: 15px;
   line-height: 135%;

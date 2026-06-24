@@ -1,3 +1,4 @@
+/* Full-height stage that vertically centers the masthead. */
 .shell {
   flex: 1;
   display: flex;
@@ -10,6 +11,7 @@
   position: relative;
 }
 
+/* Header wrapper stacking the title above the icon row. */
 .masthead {
   position: relative;
   display: flex;

@@ -1,13 +1,16 @@
+/* Centered, readable-width column for each page's text content. */
 .page {
   max-width: 760px;
   margin: 0 auto;
   text-align: left;
 }
 
+/* Spacing below a page heading. */
 .page h2 {
   margin-bottom: 16px;
 }
 
+/* Body paragraph spacing + comfortable reading line-height. */
 .page p {
   margin-bottom: 16px;
   line-height: 1.6;
