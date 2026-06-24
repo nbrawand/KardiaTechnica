@@ -1,32 +1,24 @@
 /* Full-height stage that vertically centers the masthead. */
 .shell {
-  flex: 1;
   display: flex;
   flex-direction: column;
   /* the icon-row is the only in-flow item, so it's what gets centered —
      identical position whether the title is shown or hidden. */
   justify-content: center;
-  align-items: center;
   min-height: 100svh;
-  position: relative;
 }
 
 /* Header wrapper stacking the title above the icon row. */
 .masthead {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* title floats above the icon (out of flow) — fading it never moves the icon */
 .masthead-title {
   position: absolute;
-  bottom: 100%;
+  bottom: 100%; /* Shift title up above icons */
   left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 8px;
-  white-space: nowrap;
+  transform: translateX(-50%); /* shift title left */
 }
 
 /* content always sits below the centered icon, out of flow. Kept absolute
